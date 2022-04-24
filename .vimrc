@@ -40,6 +40,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'kiteco/vim-plugin'
 Plug 'Yggdroot/indentLine'
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python'  }
 Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'frazrepo/vim-rainbow'
@@ -80,3 +81,8 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
+
+" pydocsting
+let g:pydocstring_formatter = 'google'
+let g:pydocstring_ignore_init = 1
+nmap <C-d> <Plug>(pydocstring)
