@@ -42,6 +42,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf'
 "Plug '~/.fzf'
 Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-surround'
 Plug 'frazrepo/vim-rainbow'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
@@ -56,7 +57,6 @@ let g:coc_disable_startup_warning = 1
 let g:coc_global_extensions = ['coc-pyright', 'coc-lists', 'coc-json', 'coc-git']
 " Map
 map S :w<CR>
-nnoremap <C-n> :noh<CR>
 map K 5k zz
 map J 5j zz
 map R :source $MYVIMRC<CR>
@@ -66,7 +66,11 @@ let g:nestedtext_folding = 1
 let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 nnoremap <C-f> :Files<CR>
 nnoremap <C-e> :Buffers<CR>
-let g:fzf_action = { 'ctrl-e': 'edit'  }
+let g:fzf_action = {
+                    \ 'ctrl-e': 'edit',
+                    \ 'ctrl-b': 'tab split',
+                    \ 'ctrl-v': 'vsplit'}
+"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true  }  }
 
 " NERDTree
 autocmd VimEnter * NERDTree | wincmd p
