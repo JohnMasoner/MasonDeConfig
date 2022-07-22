@@ -1,6 +1,7 @@
 let mapleader=" "
 
 set relativenumber
+filetype off
 
 "syntax on
 set showmode
@@ -44,12 +45,40 @@ Plug 'junegunn/fzf'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-surround'
 Plug 'frazrepo/vim-rainbow'
+
 Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'kiteco/vim-plugin'
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python'  }
 Plug 'Yggdroot/indentLine'
+
+Plug 'https://github.com/sillybun/autoformatpythonstatement', {'do': './install.sh'}
+let g:autoformatpython_insertmode = 0
+
+Plug 'sillybun/vim-repl'
+let g:repl_program = {
+            \   'python': 'ipython',
+            \   'default': 'zsh',
+            \   'r': 'R',
+            \   'lua': 'lua',
+            \   }
+let g:repl_predefine_python = {
+            \   'numpy': 'import numpy as np',
+            \   'matplotlib': 'from matplotlib import pyplot as plt'
+            \   }
+let g:repl_cursor_down = 1
+let g:repl_python_automerge = 1
+let g:repl_ipython_version = '7'
+nnoremap <leader>r :REPLToggle<Cr>
+autocmd Filetype python nnoremap <F12> <Esc>:REPLDebugStopAtCurrentLine<Cr>
+autocmd Filetype python nnoremap <F10> <Esc>:REPLPDBN<Cr>
+autocmd Filetype python nnoremap <F11> <Esc>:REPLPDBS<Cr>
+let g:repl_position = 3
+
 call plug#end()
 
 " coc
