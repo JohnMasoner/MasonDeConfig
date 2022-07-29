@@ -46,9 +46,13 @@ Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-surround'
 Plug 'frazrepo/vim-rainbow'
 
+Plug 'nathanaelkane/vim-indent-guides'
+
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" python indent show
+Plug 'michaeljsmith/vim-indent-object'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
@@ -103,6 +107,8 @@ let g:fzf_action = {
 
 " NERDTree
 autocmd VimEnter * NERDTree | wincmd p
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 " Tagbar
