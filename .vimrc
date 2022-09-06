@@ -46,13 +46,14 @@ Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-surround'
 Plug 'frazrepo/vim-rainbow'
 
-Plug 'nathanaelkane/vim-indent-guides'
-
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" python indent show
-Plug 'michaeljsmith/vim-indent-object'
+
+Plug 'nvie/vim-flake8'
+Plug 'psf/black', { 'branch': 'stable' }
+"Plug 'fisadev/vim-isort'
+"let g:vim_isort_map = '<C-i>'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
@@ -87,7 +88,7 @@ call plug#end()
 
 " coc
 let g:coc_disable_startup_warning = 1
-let g:coc_global_extensions = ['coc-pyright', 'coc-lists', 'coc-json', 'coc-git']
+let g:coc_global_extensions = ['coc-pyright', 'coc-lists', 'coc-json', 'coc-git', 'coc-marketplace']
 " Map
 map S :w<CR>
 map K 5k zz
@@ -107,8 +108,6 @@ let g:fzf_action = {
 
 " NERDTree
 autocmd VimEnter * NERDTree | wincmd p
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 " Tagbar
@@ -119,7 +118,8 @@ let g:pydocstring_ignore_init = 1
 nmap <C-d> <Plug>(pydocstring)
 
 " coc
-"set signcolumn=number
+"set signcolumn=yes
+set updatetime=300
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ CheckBackspace() ? "\<TAB>" :
@@ -142,4 +142,9 @@ function! ShowDocumentation()
   else
       call feedkeys('K', 'in')
   endif
+endfunction
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
