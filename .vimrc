@@ -94,6 +94,8 @@ map S :w<CR>
 map K 5k zz
 map J 5j zz
 map R :source $MYVIMRC<CR>
+map h 0
+map l $
 " formate the code
 let g:nestedtext_folding = 1
 " Fzf
@@ -118,6 +120,8 @@ let g:pydocstring_ignore_init = 1
 nmap <C-d> <Plug>(pydocstring)
 
 " coc
+" clear noise
+let g:lsp_text_edit_enabled = 0
 "set signcolumn=yes
 set updatetime=300
 inoremap <silent><expr> <TAB>
