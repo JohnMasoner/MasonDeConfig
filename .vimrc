@@ -54,6 +54,9 @@ Plug 'nvie/vim-flake8'
 Plug 'psf/black', { 'branch': 'stable' }
 "Plug 'fisadev/vim-isort'
 "let g:vim_isort_map = '<C-i>'
+"
+
+Plug 'wakatime/vim-wakatime'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
