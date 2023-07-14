@@ -24,3 +24,11 @@ vim.opt.hlsearch = false -- do not highlight matches
 vim.opt.ignorecase = true -- ignore case in searches by default
 vim.opt.smartcase = true -- but make it case sensitive if an uppercase is entered
 
+-- Tagbar
+-- auto-open
+vim.g.tagbar_autofocus = 1
+
+-- MAPLeader
+vim.g.mapleader = ' '
+
+vim.opt.updatetime = 500

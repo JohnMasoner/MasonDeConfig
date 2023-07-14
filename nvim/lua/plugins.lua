@@ -24,6 +24,14 @@ vim.cmd([[
 ]])
 
 
+vim.cmd([[
+  augroup auto_cmd_to_autoopen
+    autocmd!
+    autocmd VimEnter * nested :call tagbar#autoopen(1) | wincmd p
+    autocmd VimEnter * NERDTree | wincmd p
+  augroup end
+]])
+
 -- Install plugins here - `use ...`
 -- Packer.nvim hints
 --     after = string or list,           -- Specifies plugins to load before this plugin. See "sequencing" below
@@ -36,6 +44,25 @@ return require('packer').startup(function(use)
 
         use 'wbthomason/packer.nvim'
         use 'tanvirtin/monokai.nvim'
+
+        -- Tarbar ctags
+        use 'preservim/tagbar'
+
+        -- NerdTree
+        use 'preservim/nerdtree'
+        use 'ryanoasis/vim-devicons'
+        use 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+        -- use { "ibhagwan/fzf-lua",
+        --   -- optional for icon support
+        --   requires = { "nvim-tree/nvim-web-devicons" }
+        -- }
+
+        -- auto pairs
+        use {
+            "windwp/nvim-autopairs",
+            config = function() require("nvim-autopairs").setup {} end
+        }
 
         ---------------------------------------
         -- NOTE: PUT YOUR THIRD PLUGIN HERE --

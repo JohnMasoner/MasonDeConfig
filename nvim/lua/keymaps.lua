@@ -40,3 +40,26 @@ vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', opts)
 vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
 
+
+vim.keymap.set("n", "<c-x><c-P>", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
+vim.keymap.set("n", "<c-x><c-g>", "<cmd>lua require('fzf-lua').grep_project()<CR>", { silent = true })
+vim.keymap.set("n", "<c-x><c-b>", "<cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true })
+vim.keymap.set({"n", "v", "i"}, "<c-x><c-f>", "<cmd>lua require('fzf-lua').complete_path()<CR>", { silent = true })
+
+
+-- Tagbar config on Normal mode
+vim.keymap.set('n', '<c-t><c-t>', '<cmd>TagbarToggle<CR>', opts)
+vim.keymap.set('n', '<c-t><c-p>', '<cmd>TagbarTogglePause<CR>', opts)
+
+
+-- NEOTREE config on Normal mode
+vim.keymap.set('n', '<c-n><c-n>', '<cmd>NERDTreeToggle<CR>', opts)
+vim.keymap.set('n', '<c-n><c-f>', '<cmd>NERDTreeFind<CR>', opts)
+vim.keymap.set('n', '<c-n><c-o>', '<cmd>NERDTreeFocus<CR>', opts)
+
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
